@@ -24,8 +24,10 @@ p {
 }
 
 .banner {
+    display: flex;
+    justify-content: space-between;
     text-align: justify;
-    padding: 10px;
+    padding: 20px;
     margin-top: 20px;
     margin-left: 10%;
     margin-right: 10%;
@@ -45,6 +47,11 @@ p {
 
 
 /* Boxes */
+
+.boxes {
+    text-align: center;
+    padding: 20px;
+}
 
 .box {
     height: 30px;
