@@ -1,7 +1,10 @@
 
+import kukka from "../images/kukka.jpg";
+
 const Box = () => (
     <div className="box">
-        <p>Box</p>
+        <img alt="Profile" src={kukka} 
+            style={{ width: '100%', height: '100%' }} />
     </div>    
 )
 

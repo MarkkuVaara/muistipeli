@@ -1,5 +1,5 @@
 
-const Banner = ({level}) => (
+const Banner = ({level, points}) => (
 
     <div className="banner">
         {!level &&
@@ -9,10 +9,10 @@ const Banner = ({level}) => (
             <h2>Level: {level}</h2>
         }
         {!level &&
-            <p>Points: 0</p>
+            <p>Points: {points}</p>
         }
         {level &&
-            <h2>Points: 0</h2>
+            <h2>Points: {points}</h2>
         }
     </div>
 )

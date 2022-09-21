@@ -8,9 +8,11 @@ const App = () => {
 
   const [page, setPage] = useState("start");
   const [level, setLevel] = useState("");
+  const [points, setPoints] = useState(0);
 
   const changeLevel = (level) => {
     setLevel(level);
+    setPoints(1000);
     setPage("game");
   }
 
@@ -19,7 +21,7 @@ const App = () => {
     <div className="mainapp">
 
       <Title />
-      <Banner level={level} />
+      <Banner level={level} points={points} />
 
       <div className="main">
         {page === "start" 
@@ -38,9 +40,18 @@ const App = () => {
         }
         {page === "game"
           && <div className="boxes">
-            <Box />
-            <Box />
-            <Box />
+            <div className="boxrow">
+              <Box /> <Box /> <Box /> <Box />
+            </div>
+            <div className="boxrow">
+              <Box /> <Box /> <Box /> <Box />
+            </div>
+            <div className="boxrow">
+              <Box /> <Box /> <Box /> <Box />
+            </div>
+            <div className="boxrow">
+              <Box /> <Box /> <Box /> <Box />
+            </div>
           </div>
         }
       </div>
