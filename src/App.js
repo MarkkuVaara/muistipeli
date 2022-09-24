@@ -9,9 +9,22 @@ const App = () => {
   const [page, setPage] = useState("start");
   const [level, setLevel] = useState("");
   const [points, setPoints] = useState(0);
+  const [grid, setGrid] = useState(0);
 
   const changeLevel = (level) => {
     setLevel(level);
+    if (level === "Apprentice") {
+      setGrid(4);
+    }
+    if (level === "Knight") {
+      setGrid(6);
+    }
+    if (level === "Master") {
+      setGrid(8);
+    }
+    if (level === "Grand Master") {
+      setGrid(10);
+    }
     setPoints(1000);
     setPage("game");
   }
@@ -21,7 +34,7 @@ const App = () => {
     <div className="mainapp">
 
       <Title />
-      <Banner level={level} points={points} />
+      <Banner level={level} points={points} grid={grid} />
 
       <div className="main">
         {page === "start" 
@@ -40,18 +53,11 @@ const App = () => {
         }
         {page === "game"
           && <div className="boxes">
-            <div className="boxrow">
-              <Box /> <Box /> <Box /> <Box />
-            </div>
-            <div className="boxrow">
-              <Box /> <Box /> <Box /> <Box />
-            </div>
-            <div className="boxrow">
-              <Box /> <Box /> <Box /> <Box />
-            </div>
-            <div className="boxrow">
-              <Box /> <Box /> <Box /> <Box />
-            </div>
+            {Array.from({length: grid}, () =>
+              <div className="boxrow">
+                {Array.from({length: grid}, () => <div onClick={() => setPoints(points - 10)}> <Box /> </div>)}
+              </div>
+            )}
           </div>
         }
       </div>
