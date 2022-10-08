@@ -10,6 +10,7 @@ const App = () => {
   const [level, setLevel] = useState("");
   const [points, setPoints] = useState(0);
   const [grid, setGrid] = useState(0);
+  const [message, setMessage] = useState("");
 
   const changeLevel = (level) => {
     setLevel(level);

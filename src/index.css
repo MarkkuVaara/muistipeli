@@ -18,9 +18,16 @@ p {
 }
 
 .title {
+    display: flex;
+    justify-content:center;
     text-align: center;
     margin-left: 5%;
     margin-right: 5%;
+}
+
+.title > img {
+    padding: 10px;
+    padding-left: 40px;
 }
 
 .banner {
