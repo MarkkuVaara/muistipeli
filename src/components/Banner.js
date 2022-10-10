@@ -1,12 +1,12 @@
 
-const Banner = ({level, points, grid}) => (
+const Banner = ({level, points, gridsize}) => (
 
     <div className="banner">
         {!level &&
             <p>Level not yet chosen</p>
         }
         {level &&
-            <h2>Level: {level} ({grid} x {grid})</h2>
+            <h2>Level: {level} ({gridsize} x {gridsize})</h2>
         }
         {!level &&
             <p>Points: {points}</p>

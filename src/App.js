@@ -7,25 +7,19 @@ import Box from './components/Box';
 const App = () => {
 
   const [page, setPage] = useState("start");
+  const [message, setMessage] = useState("");
+
   const [level, setLevel] = useState("");
   const [points, setPoints] = useState(0);
-  const [grid, setGrid] = useState(0);
-  const [message, setMessage] = useState("");
+  const [gridsize, setGridsize] = useState(0);
+  const [grid, setGrid] = useState([[]]);
 
   const changeLevel = (level) => {
     setLevel(level);
-    if (level === "Apprentice") {
-      setGrid(4);
-    }
-    if (level === "Knight") {
-      setGrid(6);
-    }
-    if (level === "Master") {
-      setGrid(8);
-    }
-    if (level === "Grand Master") {
-      setGrid(10);
-    }
+    if (level === "Apprentice") { setGridsize(4); }
+    if (level === "Knight") { setGridsize(6); }
+    if (level === "Master") { setGridsize(8); }
+    if (level === "Grand Master") { setGridsize(10); }
     setPoints(1000);
     setPage("game");
   }
@@ -35,7 +29,7 @@ const App = () => {
     <div className="mainapp">
 
       <Title />
-      <Banner level={level} points={points} grid={grid} />
+      <Banner level={level} points={points} gridsize={gridsize} />
 
       <div className="main">
         {page === "start" 
@@ -54,9 +48,12 @@ const App = () => {
         }
         {page === "game"
           && <div className="boxes">
-            {Array.from({length: grid}, () =>
+            {Array.from({length: gridsize}, () =>
               <div className="boxrow">
-                {Array.from({length: grid}, () => <div onClick={() => setPoints(points - 10)}> <Box /> </div>)}
+                {Array.from({length: gridsize}, () => 
+                  <div onClick={() => setPoints(points - 10)}>
+                    <Box />
+                  </div>)}
               </div>
             )}
           </div>
