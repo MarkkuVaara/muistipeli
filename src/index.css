@@ -41,6 +41,9 @@ p {
     margin-left: 10%;
     margin-right: 10%;
     background-color: gainsboro;
+    border: 1px;
+    border-color: grey;
+    border-style: solid;
 }
 
 .main {
@@ -66,13 +69,10 @@ p {
 }
 
 .box {
-    height: 100px;
-    width: 100px;
-    padding: 5px;
+    height: 110px;
+    width: 110px;
+    padding: 1px;
     margin: 5px;
-    border: black;
-    border-width: 2px;
-    border-style: solid;
 }
 
 
