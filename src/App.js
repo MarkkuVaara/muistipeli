@@ -28,15 +28,22 @@ const App = () => {
 
   const startGame = () => {
 
-    setPage("game");
-
     const gamegrid = [];
+
     for (let i = 0; i < gridsize; i++) {
+
       const gridrow = [];
-      let number = 1;
-      gamegrid[i] = number;
+      for (let j = 0; j < gridsize; j++) {
+        let number = Math.floor(Math.random() * 10);
+        gridrow[j] = number;
+      }
+
+      gamegrid[i] = gridrow;
+
     }
+
     setGrid(gamegrid);
+    setPage("game");
   
   }
 
@@ -46,7 +53,7 @@ const App = () => {
 
       <Title />
       <Banner level={level} points={points} gridsize={gridsize} />
-      {grid}
+      {grid.map(gridrow => <p>{gridrow}</p>)}
 
       <div className="main">
         {page === "level"
