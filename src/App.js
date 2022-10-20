@@ -47,13 +47,18 @@ const App = () => {
   
   }
 
+  const checkCard = () => {
+
+    setPoints(points - 10);
+
+  }
+
   return (
 
     <div className="mainapp">
 
       <Title />
       <Banner level={level} points={points} gridsize={gridsize} />
-      {grid.map(gridrow => <p>{gridrow}</p>)}
 
       <div className="main">
         {page === "level"
@@ -72,12 +77,13 @@ const App = () => {
         }
         {page === "game"
           && <div className="boxes">
-            {Array.from({length: gridsize}, () =>
+            {grid.map(gridrow =>
               <div className="boxrow">
-                {Array.from({length: gridsize}, () => 
-                  <div onClick={() => setPoints(points - 10)}>
-                    <Box />
-                  </div>)}
+                {gridrow.map(picture => 
+                  <div onClick={() => checkCard()}>
+                    <Box picture={picture} />
+                  </div>
+                )}
               </div>
             )}
           </div>
