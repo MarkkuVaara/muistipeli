@@ -34,7 +34,7 @@ const App = () => {
 
       const gridrow = [];
       for (let j = 0; j < gridsize; j++) {
-        let number = Math.floor(Math.random() * 10);
+        let number = Math.floor(Math.random() * 50);
         gridrow[j] = number;
       }
 
@@ -47,9 +47,9 @@ const App = () => {
   
   }
 
-  const checkCard = () => {
+  const checkCard = (picture) => {
 
-    setPoints(points - 10);
+    setPoints(points - picture);
 
   }
 
@@ -80,7 +80,7 @@ const App = () => {
             {grid.map(gridrow =>
               <div className="boxrow">
                 {gridrow.map(picture => 
-                  <div onClick={() => checkCard()}>
+                  <div onClick={() => checkCard(picture)}>
                     <Box picture={picture} />
                   </div>
                 )}
