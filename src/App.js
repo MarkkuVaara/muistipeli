@@ -29,18 +29,38 @@ const App = () => {
   const startGame = () => {
 
     const gamegrid = [];
+    let number;
+
+    const pictureset = new Set();
+    const pictureset2 = new Set();
 
     for (let i = 0; i < gridsize; i++) {
 
       const gridrow = [];
       for (let j = 0; j < gridsize; j++) {
-        let number = Math.floor(Math.random() * 50);
+
+        while (true) {
+
+          number = Math.floor(Math.random() * 55);
+          if (!pictureset.has(number)) {
+            pictureset.add(number);
+            break;
+          } else if (!pictureset2.has(number)) {
+            pictureset2.add(number);
+            break;
+          }
+
+        }
+
         gridrow[j] = number;
+
       }
 
       gamegrid[i] = gridrow;
 
     }
+
+    console.log(pictureset);
 
     setGrid(gamegrid);
     setPage("game");
