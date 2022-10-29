@@ -41,7 +41,7 @@ const App = () => {
 
         while (true) {
 
-          number = Math.floor(Math.random() * 55);
+          number = Math.floor(Math.random() * (gridsize * gridsize / 2));
           if (!pictureset.has(number)) {
             pictureset.add(number);
             break;
