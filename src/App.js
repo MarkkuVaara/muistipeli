@@ -52,7 +52,7 @@ const App = () => {
 
         }
 
-        gridrow[j] = number;
+        gridrow[j] = [number, 0];
 
       }
 
@@ -69,8 +69,7 @@ const App = () => {
 
   const checkCard = (picture) => {
 
-    setPoints(points - picture);
-    document.getElementById("back").style.display = "visible";
+    setPoints(points - picture[0]);
 
   }
 
