@@ -70,6 +70,7 @@ const App = () => {
   const checkCard = (picture) => {
 
     setPoints(points - picture);
+    document.getElementById("back").style.display = "visible";
 
   }
 
