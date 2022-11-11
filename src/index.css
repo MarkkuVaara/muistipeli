@@ -169,5 +169,5 @@ button:focus {
 }
 
 .back {
-    display: none;
+    display: visible;
 }

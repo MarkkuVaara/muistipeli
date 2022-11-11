@@ -71,6 +71,26 @@ const App = () => {
 
     setPoints(points - picture[0]);
 
+    let gridcopy = grid;
+    let picturecopy = picture;
+    picturecopy[1] = 1;
+    
+    for (let i = 0; i < gridsize; i++) {
+
+      for (let j = 0; j < gridsize; j++) {
+
+        if (grid[i][j][0] == picture[0]) {
+
+          gridcopy[i][j] = picturecopy;
+
+        }
+
+      }
+
+    }
+
+    setGrid(gridcopy);
+
   }
 
   return (
