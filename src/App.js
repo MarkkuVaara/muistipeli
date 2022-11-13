@@ -3,11 +3,12 @@ import React, { useState } from 'react';
 import Title from './components/Title';
 import Banner from './components/Banner';
 import Box from './components/Box';
+import Message from './components/Message';
 
 const App = () => {
 
   const [page, setPage] = useState("level");
-  const [message, setMessage] = useState("");
+  const [message, setMessage] = useState(null);
 
   const [level, setLevel] = useState("");
   const [points, setPoints] = useState(0);
@@ -81,7 +82,7 @@ const App = () => {
 
       for (let j = 0; j < gridsize; j++) {
 
-        if (grid[i][j][2] == picture[2]) {
+        if (grid[i][j][2] === picture[2]) {
 
           gridcopy[i][j] = picturecopy;
 
@@ -93,8 +94,10 @@ const App = () => {
 
     setGrid(gridcopy);
 
-    if (picture[0] == lastcard) {
-      console.log("Match!")
+    if (picture[0] === lastcard) {
+      setMessage("Match!");
+    } else {
+      setMessage(null);
     }
 
     setLastcard(picture[0]);
@@ -107,7 +110,8 @@ const App = () => {
 
       <Title />
       <Banner level={level} points={points} gridsize={gridsize} />
-
+      <Message message={message} />
+      
       <div className="main">
         {page === "level"
           && <div className="startbutton">
