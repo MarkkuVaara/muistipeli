@@ -13,6 +13,7 @@ const App = () => {
   const [points, setPoints] = useState(0);
   const [gridsize, setGridsize] = useState(4);
   const [grid, setGrid] = useState([]);
+  const [lastcard, setLastcard] = useState(-1);
 
   const changeLevel = (level) => {
 
@@ -52,7 +53,8 @@ const App = () => {
 
         }
 
-        gridrow[j] = [number, 0];
+        let id = Math.floor(Math.random() * 100000);
+        gridrow[j] = [number, 0, id];
 
       }
 
@@ -79,7 +81,7 @@ const App = () => {
 
       for (let j = 0; j < gridsize; j++) {
 
-        if (grid[i][j][0] == picture[0]) {
+        if (grid[i][j][2] == picture[2]) {
 
           gridcopy[i][j] = picturecopy;
 
@@ -90,6 +92,12 @@ const App = () => {
     }
 
     setGrid(gridcopy);
+
+    if (picture[0] == lastcard) {
+      console.log("Match!")
+    }
+
+    setLastcard(picture[0]);
 
   }
 
