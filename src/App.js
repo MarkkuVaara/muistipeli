@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
 import Title from './components/Title';
 import Banner from './components/Banner';
@@ -16,14 +16,33 @@ const App = () => {
   const [grid, setGrid] = useState([]);
   const [lastcard, setLastcard] = useState(-1);
 
+  useEffect(() => {
+
+    const interval = setInterval(() => setPoints(points - 1), 1000);
+
+    return () => clearInterval(interval);
+
+  }, [points]);
+
   const changeLevel = (level) => {
 
     setLevel(level);
-    if (level === "Apprentice") { setGridsize(4); }
-    if (level === "Knight") { setGridsize(6); }
-    if (level === "Master") { setGridsize(8); }
-    if (level === "Grand Master") { setGridsize(10); }
-    setPoints(1000);
+    if (level === "Apprentice") { 
+      setGridsize(4);
+      setPoints(50);
+     }
+    if (level === "Knight") { 
+      setGridsize(6);
+      setPoints(200);
+     }
+    if (level === "Master") { 
+      setGridsize(8);
+      setPoints(800);
+     }
+    if (level === "Grand Master") { 
+      setGridsize(10);
+      setPoints(3200);
+     }
     setPage("start");
 
   }
@@ -96,6 +115,9 @@ const App = () => {
 
     if (picture[0] === lastcard) {
       setMessage("Match!");
+      setTimeout(() => {
+        setMessage(null)
+      }, 5000);
     } else {
       setMessage(null);
     }
