@@ -19,7 +19,6 @@ const App = () => {
   useEffect(() => {
 
     const interval = setInterval(() => setPoints(points - 1), 1000);
-
     return () => clearInterval(interval);
 
   }, [points]);
@@ -114,12 +113,31 @@ const App = () => {
     setGrid(gridcopy);
 
     if (picture[0] === lastcard) {
+
       setMessage("Match!");
+      setPoints(points + 20);
       setTimeout(() => {
         setMessage(null)
       }, 5000);
+
     } else {
+
       setMessage(null);
+      for (let i = 0; i < gridsize; i++) {
+
+        for (let j = 0; j < gridsize; j++) {
+  
+          if (grid[i][j][2] === picture[2]) {
+  
+            gridcopy[i][j] = picture;
+  
+          }
+  
+        }
+  
+      }
+      setGrid(gridcopy);
+
     }
 
     setLastcard(picture[0]);
