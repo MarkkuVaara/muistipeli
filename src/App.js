@@ -110,37 +110,47 @@ const App = () => {
 
     }
 
-    setGrid(gridcopy);
+    if (lastcard !== -1) {
 
-    if (picture[0] === lastcard) {
+      if (picture[0] === lastcard) {
 
-      setMessage("Match!");
-      setPoints(points + 20);
-      setTimeout(() => {
-        setMessage(null)
-      }, 5000);
+        setMessage("Match!");
+        setPoints(points + 20);
+        setTimeout(() => {
+          setMessage(null)
+        }, 5000);
 
-    } else {
+      } else {
 
-      setMessage(null);
-      for (let i = 0; i < gridsize; i++) {
+        setMessage("Not match");
+        for (let i = 0; i < gridsize; i++) {
 
-        for (let j = 0; j < gridsize; j++) {
+          for (let j = 0; j < gridsize; j++) {
   
-          if (grid[i][j][2] === picture[2]) {
+            if (grid[i][j][2] === picture[2]) {
   
-            gridcopy[i][j] = picture;
+              gridcopy[i][j][1] = 0;
+  
+            }
+            if (grid[i][j][0] === lastcard) {
+  
+              gridcopy[i][j][1] = 0;
+  
+            }
   
           }
   
         }
-  
-      }
-      setGrid(gridcopy);
 
+      }
     }
 
-    setLastcard(picture[0]);
+    setGrid(gridcopy);
+    if(lastcard === -1) {
+      setLastcard(picture[0]);
+    } else {
+      setLastcard(-1);
+    }
 
   }
 

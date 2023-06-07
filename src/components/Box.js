@@ -12,13 +12,14 @@ const Box = (props) => {
         {picture[1] === 0 &&
             <div className="front">
                 <img alt="Profile" src={backside} 
-                    style={{ width: '100%', height: '100%' }} />
+                    style={{ width: '100%', height: '90%' }} />
+                {picture[0]}
             </div>
         }
         {picture[1] === 1 &&
             <div className="back">
                 <img alt="Profile" src={memory} 
-                    style={{ width: '100%', height: '100%' }} />
+                    style={{ width: '100%', height: '90%' }} />
                 {picture[0]}
             </div>
         }
