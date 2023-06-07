@@ -23,6 +23,13 @@ const Box = (props) => {
                 {picture[0]}
             </div>
         }
+        {picture[1] === 2 &&
+            <div className="back">
+                <img alt="Profile" src={memory} 
+                    style={{ width: '100%', height: '100%' }} />
+                {picture[0]}
+            </div>
+        }
     </div>    
 
     )

@@ -94,62 +94,85 @@ const App = () => {
 
     let gridcopy = grid;
     let picturecopy = picture;
-    picturecopy[1] = 1;
-    
-    for (let i = 0; i < gridsize; i++) {
 
-      for (let j = 0; j < gridsize; j++) {
+    if (picturecopy[1] !== 2) {
 
-        if (grid[i][j][2] === picture[2]) {
+      picturecopy[1] = 1;
 
-          gridcopy[i][j] = picturecopy;
+      for (let i = 0; i < gridsize; i++) {
+
+        for (let j = 0; j < gridsize; j++) {
+
+          if (grid[i][j][2] === picture[2]) {
+
+            gridcopy[i][j] = picturecopy;
+
+          }
 
         }
 
       }
 
-    }
+      if (lastcard !== -1) {
 
-    if (lastcard !== -1) {
+        if (picture[0] === lastcard) {
 
-      if (picture[0] === lastcard) {
+          setMessage("Match!");
+          for (let i = 0; i < gridsize; i++) {
 
-        setMessage("Match!");
-        setPoints(points + 20);
-        setTimeout(() => {
-          setMessage(null)
-        }, 5000);
-
-      } else {
-
-        setMessage("Not match");
-        for (let i = 0; i < gridsize; i++) {
-
-          for (let j = 0; j < gridsize; j++) {
+            for (let j = 0; j < gridsize; j++) {
   
-            if (grid[i][j][2] === picture[2]) {
+              if (grid[i][j][2] === picture[2]) {
   
-              gridcopy[i][j][1] = 0;
+                gridcopy[i][j][1] = 2;
   
-            }
-            if (grid[i][j][0] === lastcard) {
+              }
+              if (grid[i][j][0] === lastcard) {
   
-              gridcopy[i][j][1] = 0;
+                gridcopy[i][j][1] = 2;
+  
+              }
   
             }
   
           }
+
+          setPoints(points + 20);
+          setTimeout(() => {
+            setMessage(null)
+          }, 5000);
+
+        } else {
+
+          setMessage("Not match");
+          for (let i = 0; i < gridsize; i++) {
+
+            for (let j = 0; j < gridsize; j++) {
   
+              if (grid[i][j][2] === picture[2]) {
+  
+                gridcopy[i][j][1] = 0;
+  
+              }
+              if (grid[i][j][0] === lastcard) {
+  
+                gridcopy[i][j][1] = 0;
+  
+              }
+  
+            }
+  
+          }
+
         }
-
       }
-    }
 
-    setGrid(gridcopy);
-    if(lastcard === -1) {
-      setLastcard(picture[0]);
-    } else {
-      setLastcard(-1);
+      setGrid(gridcopy);
+      if (lastcard === -1) {
+        setLastcard(picture[0]);
+      } else {
+        setLastcard(-1);
+      }
     }
 
   }
