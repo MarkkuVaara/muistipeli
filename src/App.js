@@ -95,7 +95,7 @@ const App = () => {
     let gridcopy = grid;
     let picturecopy = picture;
 
-    if (picturecopy[1] !== 2) {
+    if (picturecopy[1] === 0) {
 
       picturecopy[1] = 1;
 

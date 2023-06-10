@@ -159,7 +159,8 @@ button:focus {
 /*Card content */
 
 .front,
-.back {
+.back,
+.backend {
     height: 110px;
     width: 110px;
 }
@@ -170,4 +171,9 @@ button:focus {
 
 .back {
     display: visible;
+}
+
+.backend {
+    display: visible;
+    border: solid 2px black;
 }
