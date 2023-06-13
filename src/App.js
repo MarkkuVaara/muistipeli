@@ -90,13 +90,12 @@ const App = () => {
 
   const checkCard = (picture) => {
 
-    setPoints(points - picture[0]);
-
     let gridcopy = grid;
     let picturecopy = picture;
 
     if (picturecopy[1] === 0) {
 
+      setPoints(points - 5);
       picturecopy[1] = 1;
 
       for (let i = 0; i < gridsize; i++) {

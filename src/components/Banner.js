@@ -9,7 +9,7 @@ const Banner = ({level, points, gridsize}) => (
             <h2>Level: {level} ({gridsize} x {gridsize})</h2>
         }
         {!level &&
-            <p>Points: {points}</p>
+            <p>Points: 0</p>
         }
         {level &&
             <h2>Points: {points}</h2>
