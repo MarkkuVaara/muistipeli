@@ -143,7 +143,7 @@ const App = () => {
 
         } else {
 
-          setMessage("Not match");
+          setMessage("No match");
           for (let i = 0; i < gridsize; i++) {
 
             for (let j = 0; j < gridsize; j++) {
@@ -163,6 +163,13 @@ const App = () => {
   
           }
 
+          setTimeout(() => {
+            setGrid(gridcopy);
+            setMessage(null);
+          }, 1000);
+          setLastcard(-1);
+          return;
+
         }
       }
 
@@ -172,6 +179,32 @@ const App = () => {
       } else {
         setLastcard(-1);
       }
+      checkAllCards();
+
+    }
+
+  }
+
+  const checkAllCards = () => {
+
+    let cardcount = 0;
+
+    for (let i = 0; i < gridsize; i++) {
+
+      for (let j = 0; j < gridsize; j++) {
+
+        if (grid[i][j][1] === 2) {
+
+          cardcount = cardcount + 1;
+
+        }
+
+      }
+
+    }
+
+    if (cardcount === gridsize * gridsize) {
+      setMessage("WIN!!!");
     }
 
   }
