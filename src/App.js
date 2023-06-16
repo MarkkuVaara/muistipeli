@@ -204,7 +204,8 @@ const App = () => {
     }
 
     if (cardcount === gridsize * gridsize) {
-      setMessage("WIN!!!");
+      setPage("win");
+      setLevel(null);
     }
 
   }
@@ -244,6 +245,9 @@ const App = () => {
               </div>
             )}
           </div>
+        }
+        {page === "win"
+          && <h1>YOU HAVE FOUND ALL MATCHES</h1>
         }
       </div>
 
