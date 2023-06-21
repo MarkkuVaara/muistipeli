@@ -4,6 +4,7 @@ import Title from './components/Title';
 import Banner from './components/Banner';
 import Box from './components/Box';
 import Message from './components/Message';
+import Congrats from './components/Congrats';
 
 const App = () => {
 
@@ -15,6 +16,7 @@ const App = () => {
   const [gridsize, setGridsize] = useState(4);
   const [grid, setGrid] = useState([]);
   const [lastcard, setLastcard] = useState(-1);
+  const [score, setScore] = useState(0);
 
   useEffect(() => {
 
@@ -205,6 +207,7 @@ const App = () => {
 
     if (cardcount === gridsize * gridsize) {
       setPage("win");
+      setScore(points);
       setLevel(null);
     }
 
@@ -247,7 +250,7 @@ const App = () => {
           </div>
         }
         {page === "win"
-          && <h1>YOU HAVE FOUND ALL MATCHES</h1>
+          && <Congrats score={score} />
         }
       </div>
 

@@ -55,6 +55,13 @@ p {
     margin-right: 10%;
 }
 
+.win {
+    text-align: center;
+    border: 1px;
+    border-color: grey;
+    border-style: solid;
+}
+
 
 /* Buttons */
 
