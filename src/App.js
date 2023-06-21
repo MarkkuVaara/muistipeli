@@ -213,6 +213,11 @@ const App = () => {
 
   }
 
+  const newGame = () => {
+      setPage("level");
+      setPoints(0);
+  }
+
   return (
 
     <div className="mainapp">
@@ -250,7 +255,10 @@ const App = () => {
           </div>
         }
         {page === "win"
-          && <Congrats score={score} />
+          && <div className="win">
+            <Congrats score={score} />
+            <button onClick={() => newGame()}>New game</button>
+          </div>
         }
       </div>
 

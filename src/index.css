@@ -60,6 +60,11 @@ p {
     border: 1px;
     border-color: grey;
     border-style: solid;
+    padding-bottom: 10px;
+}
+
+.win > button {
+    margin-top: 10px;
 }
 
 
