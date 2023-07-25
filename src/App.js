@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import axios from 'axios';
 
 import Title from './components/Title';
 import Banner from './components/Banner';
@@ -10,6 +11,7 @@ const App = () => {
 
   const [page, setPage] = useState("level");
   const [message, setMessage] = useState(null);
+  const [highscores, setHighscores] = useState([]);
 
   const [level, setLevel] = useState("");
   const [points, setPoints] = useState(0);
@@ -17,6 +19,24 @@ const App = () => {
   const [grid, setGrid] = useState([]);
   const [lastcard, setLastcard] = useState(-1);
   const [score, setScore] = useState(0);
+
+  useEffect(() => {
+
+    console.log('Fetching..');
+    axios
+      .get('http://localhost:3001/images')
+      .then(response => {
+        console.log('Promise fulfilled');
+        console.log(response.data);
+      });
+    axios
+      .get('http://localhost:3001/highscores')
+      .then(response => {
+        console.log('Other promise fulfilled');
+        setHighscores(response.data);
+      });
+
+  }, []);
 
   useEffect(() => {
 
@@ -258,6 +278,11 @@ const App = () => {
           && <div className="win">
             <Congrats score={score} />
             <button onClick={() => newGame()}>New game</button>
+            {highscores.map(highscore => 
+              <div>
+                {JSON.stringify(highscore)}
+              </div>
+            )}
           </div>
         }
       </div>
