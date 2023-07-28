@@ -226,9 +226,22 @@ const App = () => {
     }
 
     if (cardcount === gridsize * gridsize) {
+
       setPage("win");
       setScore(points);
       setLevel(null);
+
+      const Highscore = {
+        name: "Markku",
+        score: score
+      };
+
+      axios
+        .post('http://localhost:3001/highscores', Highscore)
+        .then(response => {
+          console.log('Highscore sent!');
+        });
+
     }
 
   }
@@ -277,12 +290,20 @@ const App = () => {
         {page === "win"
           && <div className="win">
             <Congrats score={score} />
-            <button onClick={() => newGame()}>New game</button>
-            {highscores.map(highscore => 
-              <div>
-                {JSON.stringify(highscore)}
-              </div>
-            )}
+            <div>
+              <button onClick={() => newGame()}>New game</button>
+              <h3>Highscores:</h3>
+              {highscores.map(highscore => 
+                <div className="highscore_container">
+                  <div className="highscore1">
+                    <b>{highscore.name}</b>
+                  </div>
+                  <div className="highscore2">
+                  <b>{highscore.score}</b>
+                  </div>
+                </div>
+              )}
+            </div>
           </div>
         }
       </div>

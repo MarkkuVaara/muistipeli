@@ -3,8 +3,8 @@ const Congrats = (props) => {
 
     return (
         <div>
-            <h1>You have finished game!</h1>
-            <h2>Your final score: {props.score}</h2>
+            <h2>You have finished game!</h2>
+            <h3>Your final score: {props.score}</h3>
         </div>
     )
 

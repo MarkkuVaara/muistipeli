@@ -67,6 +67,18 @@ p {
     margin-top: 10px;
 }
 
+.highscore_container
+{
+    text-align: center;
+    padding-bottom: 10px;
+}
+
+.highscore1, .highscore2
+{
+    display: inline;
+    padding-left: 10px;
+}
+
 
 /* Buttons */
 
