@@ -1,11 +1,13 @@
 import React, { useState, useEffect } from 'react';
-import axios from 'axios';
 
 import Title from './components/Title';
 import Banner from './components/Banner';
 import Box from './components/Box';
 import Message from './components/Message';
 import Congrats from './components/Congrats';
+
+import highscoreService from './services/Highscores';
+import imageService from './services/Images';
 
 const App = () => {
 
@@ -23,14 +25,15 @@ const App = () => {
   useEffect(() => {
 
     console.log('Fetching..');
-    axios
-      .get('http://localhost:3001/images')
+    imageService
+      .getAll()
       .then(response => {
         console.log('Promise fulfilled');
         console.log(response.data);
       });
-    axios
-      .get('http://localhost:3001/highscores')
+
+    highscoreService
+      .getAll()
       .then(response => {
         console.log('Other promise fulfilled');
         setHighscores(response.data);
@@ -233,11 +236,13 @@ const App = () => {
 
       const Highscore = {
         name: "Markku",
-        score: score
+        score: points
       };
 
-      axios
-        .post('http://localhost:3001/highscores', Highscore)
+      setHighscores(highscores.concat(Highscore));
+
+      highscoreService
+        .create(Highscore)
         .then(response => {
           console.log('Highscore sent!');
         });
