@@ -67,16 +67,28 @@ p {
     margin-top: 10px;
 }
 
-.highscore_container
-{
+.highscores {
     text-align: center;
     padding-bottom: 10px;
+}
+
+.highscore_container
+{
+    text-align: left;
+    padding-bottom: 10px;
+    margin-left: 30%;
+    margin-right: 30%;
 }
 
 .highscore1, .highscore2
 {
     display: inline;
     padding-left: 10px;
+    font-size: 20px;
+}
+
+.highscore2 {
+    padding-left: 50%;
 }
 
 

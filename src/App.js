@@ -36,7 +36,12 @@ const App = () => {
       .getAll()
       .then(response => {
         console.log('Other promise fulfilled');
-        setHighscores(response.data);
+        setHighscores(response.data.sort( function(a, b){
+          if (a.score > b.score) {return -1;};
+          if (a.score < b.score) {return 1;};
+          return 0;
+          })
+        );
       });
 
   }, []);
@@ -293,22 +298,24 @@ const App = () => {
           </div>
         }
         {page === "win"
-          && <div className="win">
-            <Congrats score={score} />
-            <div>
+          && <div>
+            <div className="win">
+              <Congrats score={score} />
               <button onClick={() => newGame()}>New game</button>
-              <h3>Highscores:</h3>
-              {highscores.map(highscore => 
-                <div className="highscore_container">
-                  <div className="highscore1">
-                    <b>{highscore.name}</b>
-                  </div>
-                  <div className="highscore2">
-                  <b>{highscore.score}</b>
-                  </div>
-                </div>
-              )}
             </div>
+            <div className="highscores">
+              <h3>Highscores:</h3>
+            </div>
+            {highscores.map(highscore => 
+              <div className="highscore_container">
+                <div className="highscore1">
+                  <b>{highscore.name}</b>
+                </div>
+                <div className="highscore2">
+                  <b>{highscore.score}</b>
+                </div>
+              </div>
+            )}
           </div>
         }
       </div>
