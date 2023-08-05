@@ -239,12 +239,19 @@ const App = () => {
       setScore(points);
       setLevel(null);
 
+      let hsname = prompt("You have completed game! Insert your name here:", "John Doe"); 
+
       const Highscore = {
-        name: "Markku",
+        name: hsname,
         score: points
       };
 
-      setHighscores(highscores.concat(Highscore));
+      setHighscores(highscores.concat(Highscore).sort( function(a, b){
+          if (a.score > b.score) {return -1;};
+          if (a.score < b.score) {return 1;};
+          return 0;
+        })
+      );
 
       highscoreService
         .create(Highscore)
