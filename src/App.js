@@ -311,7 +311,7 @@ const App = () => {
               <button onClick={() => newGame()}>New game</button>
             </div>
             <div className="highscores">
-              <h3>Highscores:</h3>
+              <h2>Highscores:</h2>
             </div>
             {highscores.map(highscore => 
               <div className="highscore_container">
@@ -323,6 +323,8 @@ const App = () => {
                 </div>
               </div>
             )}
+            <div className="highscoreend">
+            </div>
           </div>
         }
       </div>
