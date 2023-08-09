@@ -5,6 +5,7 @@ import Banner from './components/Banner';
 import Box from './components/Box';
 import Message from './components/Message';
 import Congrats from './components/Congrats';
+import Highscoretable from './components/Highscoretable';
 
 import highscoreService from './services/Highscores';
 import imageService from './services/Images';
@@ -237,13 +238,13 @@ const App = () => {
 
       setPage("win");
       setScore(points);
-      setLevel(null);
 
       let hsname = prompt("You have completed game! Insert your name here:", "John Doe"); 
 
       const Highscore = {
         name: hsname,
-        score: points
+        score: points,
+        level: level
       };
 
       setHighscores(highscores.concat(Highscore).sort( function(a, b){
@@ -310,21 +311,7 @@ const App = () => {
               <Congrats score={score} />
               <button onClick={() => newGame()}>New game</button>
             </div>
-            <div className="highscores">
-              <h2>Highscores:</h2>
-            </div>
-            {highscores.map(highscore => 
-              <div className="highscore_container">
-                <div className="highscore1">
-                  <b>{highscore.name}</b>
-                </div>
-                <div className="highscore2">
-                  <b>{highscore.score}</b>
-                </div>
-              </div>
-            )}
-            <div className="highscoreend">
-            </div>
+            <Highscoretable highscores={highscores} />
           </div>
         }
       </div>
