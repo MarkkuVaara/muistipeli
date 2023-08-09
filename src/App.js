@@ -311,7 +311,7 @@ const App = () => {
               <Congrats score={score} />
               <button onClick={() => newGame()}>New game</button>
             </div>
-            <Highscoretable highscores={highscores} />
+            <Highscoretable highscores={highscores} level={level} />
           </div>
         }
       </div>

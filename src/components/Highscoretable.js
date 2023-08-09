@@ -1,12 +1,12 @@
 
 const Highscoretable = (props) => {
 
-    const highscores = props.highscores;
+    const highscores = props.highscores.filter((highscore) => highscore.level === props.level);
 
     return (
         <>
         <div className="highscores">
-            <h2>Highscores:</h2>
+            <h2>Highscores ({props.level} level):</h2>
         </div>
         {highscores.map(highscore => 
             <div className="highscore_container">
