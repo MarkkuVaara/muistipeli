@@ -149,6 +149,21 @@ button:focus {
     padding: 20px;
 }
 
+.hiddenbutton {
+    text-align: center;
+    margin-top: 30px;
+}
+
+.hiddenbutton > button {
+    color: white;
+    background-color: white;
+    font-family: Ubuntu sans-serif;
+    font-size: 18px;
+    padding: 10px;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
 
 /* Boxes */
 

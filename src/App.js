@@ -269,6 +269,10 @@ const App = () => {
       setPoints(0);
   }
 
+  const logIn = () => {
+      alert("Log in");
+  }
+
   return (
 
     <div className="mainapp">
@@ -279,13 +283,18 @@ const App = () => {
       
       <div className="main">
         {page === "level"
-          && <div className="startbutton">
-            <h2>Select level:</h2>
-            <button onClick={() => changeLevel("Apprentice")}>Apprentice</button>
-            <button onClick={() => changeLevel("Knight")}>Knight</button>
-            <button onClick={() => changeLevel("Master")}>Master</button>
-            <button onClick={() => changeLevel("Grand Master")}>Grand Master</button>
-          </div>
+          && <>
+            <div className="startbutton">
+              <h2>Select level:</h2>
+              <button onClick={() => changeLevel("Apprentice")}>Apprentice</button>
+              <button onClick={() => changeLevel("Knight")}>Knight</button>
+              <button onClick={() => changeLevel("Master")}>Master</button>
+              <button onClick={() => changeLevel("Grand Master")}>Grand Master</button>
+            </div>
+            <div className="hiddenbutton">
+              <button onClick={() => logIn()}>Click</button>
+            </div>
+          </>
         }
         {page === "start" 
           && <div className="startbutton">
