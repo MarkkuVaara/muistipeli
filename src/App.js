@@ -23,6 +23,11 @@ const App = () => {
   const [lastcard, setLastcard] = useState(-1);
   const [score, setScore] = useState(0);
 
+  const [user, setUser] = useState("");
+  const [login, setLogin] = useState("");
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
+
   useEffect(() => {
 
     console.log('Fetching..');
@@ -265,13 +270,18 @@ const App = () => {
   }
 
   const newGame = () => {
-      setPage("level");
-      setPoints(0);
-  }
+    setPage("level");
+    setPoints(0);
+  };
 
   const logIn = () => {
-      alert("Log in");
-  }
+    setLogin("visible");
+  };
+
+  const handleLogin = (event) => {
+    event.preventDefault();
+    console.log('logging in with', username, password);
+  };
 
   return (
 
@@ -294,6 +304,24 @@ const App = () => {
             <div className="hiddenbutton">
               <button onClick={() => logIn()}>Click</button>
             </div>
+            {login === "visible"
+              && <div className="loginform">
+              <h2>Login</h2>
+              <form onSubmit={handleLogin}>
+                <div>
+                  username
+                  <input type="text" value={username} name="Username"
+                    onChange={({ target }) => setUsername(target.value)} />
+                </div>
+                <div>
+                  password
+                  <input type="password" value={password} name="Password"
+                    onChange={({ target }) => setPassword(target.value)} />
+                </div>
+                <button type="submit">login</button>
+              </form>
+            </div>
+            }
           </>
         }
         {page === "start" 
