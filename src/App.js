@@ -9,6 +9,7 @@ import Highscoretable from './components/Highscoretable';
 
 import highscoreService from './services/Highscores';
 import imageService from './services/Images';
+import loginService from './services/Login';
 
 const App = () => {
 
@@ -23,7 +24,7 @@ const App = () => {
   const [lastcard, setLastcard] = useState(-1);
   const [score, setScore] = useState(0);
 
-  const [user, setUser] = useState("");
+  const [user, setUser] = useState(null);
   const [login, setLogin] = useState("");
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
@@ -278,9 +279,25 @@ const App = () => {
     setLogin("visible");
   };
 
-  const handleLogin = (event) => {
+  const handleLogin = async (event) => {
     event.preventDefault();
     console.log('logging in with', username, password);
+
+    try {
+      const user = await loginService.login({
+        username, password,
+      });
+      setUser(user);
+      imageService.setToken(user.token);
+      setUsername('');
+      setPassword('');
+    } catch (exception) {
+      setMessage('wrong credentials!');
+      setTimeout(() => {
+        setMessage(null)
+      }, 5000);
+    }
+
   };
 
   return (
@@ -304,7 +321,7 @@ const App = () => {
             <div className="hiddenbutton">
               <button onClick={() => logIn()}>Click</button>
             </div>
-            {login === "visible"
+            {(login === "visible") && (user === null)
               && <div className="loginform">
               <h2>Login</h2>
               <form onSubmit={handleLogin}>
