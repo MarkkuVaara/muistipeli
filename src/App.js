@@ -6,6 +6,7 @@ import Box from './components/Box';
 import Message from './components/Message';
 import Congrats from './components/Congrats';
 import Highscoretable from './components/Highscoretable';
+import FileUploader from './components/FileUploader';
 
 import highscoreService from './services/Highscores';
 import imageService from './services/Images';
@@ -28,6 +29,8 @@ const App = () => {
   const [login, setLogin] = useState("");
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+
+  const [selectedFile, setSelectedFile] = useState(null);
 
   useEffect(() => {
 
@@ -300,6 +303,10 @@ const App = () => {
 
   };
 
+  const addImage = () => {
+    console.log("Image added..");
+  }
+
   return (
 
     <div className="mainapp">
@@ -338,6 +345,16 @@ const App = () => {
                 <button type="submit">login</button>
               </form>
             </div>
+            }
+            {user != null
+              && <div>
+                <form onSubmit={addImage}>
+                  <p>{user.username} logged in</p>
+                  <FileUploader onFileSelectSuccess={(file) => setSelectedFile(file)}
+                    onFileSelectError={({ error }) => alert(error)} />
+                  <button type="submit">Save image</button>
+                </form>
+              </div>
             }
           </>
         }
