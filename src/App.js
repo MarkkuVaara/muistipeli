@@ -17,6 +17,7 @@ const App = () => {
   const [page, setPage] = useState("level");
   const [message, setMessage] = useState(null);
   const [highscores, setHighscores] = useState([]);
+  const [images, setImages] = useState([]);
 
   const [level, setLevel] = useState("");
   const [points, setPoints] = useState(0);
@@ -39,7 +40,7 @@ const App = () => {
       .getAll()
       .then(response => {
         console.log('Promise fulfilled');
-        console.log(response.data);
+        setImages(response.data);
       });
 
     highscoreService
@@ -303,8 +304,20 @@ const App = () => {
 
   };
 
-  const addImage = () => {
+  const addImage = (event) => {
+    event.preventDefault();
     console.log("Image added..");
+
+    const Image = {
+      image: selectedFile
+    }
+
+    imageService
+      .create(Image)
+      .then(response => {
+        console.log('Image sent!');
+      });
+
   }
 
   return (
@@ -348,12 +361,18 @@ const App = () => {
             }
             {user != null
               && <div>
+                <p>{user.username} logged in</p>
                 <form onSubmit={addImage}>
-                  <p>{user.username} logged in</p>
                   <FileUploader onFileSelectSuccess={(file) => setSelectedFile(file)}
                     onFileSelectError={({ error }) => alert(error)} />
                   <button type="submit">Save image</button>
                 </form>
+                <p>Images in database:</p>
+                {images.map(image =>
+                  <div className="">
+                    <img src={image.image} alt="" />
+                  </div>
+                )}
               </div>
             }
           </>

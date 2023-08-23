@@ -181,6 +181,10 @@ button:focus {
     margin-right: 20%;
 }
 
+.dbimage {
+    height: 50px;
+    width: 50px;
+}
 
 /* Boxes */
 
