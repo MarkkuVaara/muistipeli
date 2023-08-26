@@ -100,17 +100,19 @@ const App = () => {
       const gridrow = [];
       for (let j = 0; j < gridsize; j++) {
 
-        while (true) {
+        number = gridsize * gridsize / 2;
 
-          number = Math.floor(Math.random() * (gridsize * gridsize / 2));
+        for (let i = 0; i < number; i++) {
+
+          const randomImage = Math.floor(Math.random() * images.length);
+          number = images[randomImage].id;
+          console.log(number);
+
           if (!pictureset.has(number)) {
             pictureset.add(number);
-            break;
           } else if (!pictureset2.has(number)) {
             pictureset2.add(number);
-            break;
           }
-
         }
 
         let id = Math.floor(Math.random() * 100000);
@@ -315,7 +317,10 @@ const App = () => {
     imageService
       .create(Image)
       .then(response => {
-        console.log('Image sent!');
+        setMessage('Image sent!');
+        setTimeout(() => {
+          setMessage(null)
+        }, 2000);
       });
 
   }
@@ -388,7 +393,7 @@ const App = () => {
               <div className="boxrow">
                 {gridrow.map(picture => 
                   <div onClick={() => checkCard(picture)}>
-                    <Box picture={picture} />
+                    <Box picture={picture} images={images} />
                   </div>
                 )}
               </div>
