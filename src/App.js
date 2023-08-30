@@ -95,26 +95,31 @@ const App = () => {
     const pictureset = new Set();
     const pictureset2 = new Set();
 
+    let imagenumber = gridsize * gridsize;
+
     for (let i = 0; i < gridsize; i++) {
 
       const gridrow = [];
       for (let j = 0; j < gridsize; j++) {
 
-        number = gridsize * gridsize / 2;
-
-        for (let i = 0; i < number; i++) {
+        while (imagenumber > 0) {
 
           const randomImage = Math.floor(Math.random() * images.length);
           number = images[randomImage].id;
-          console.log(number);
 
           if (!pictureset.has(number)) {
             pictureset.add(number);
+            imagenumber = imagenumber - 1;
+            break;
           } else if (!pictureset2.has(number)) {
             pictureset2.add(number);
+            imagenumber = imagenumber - 1;
+            break;
           }
+
         }
 
+        console.log(number);
         let id = Math.floor(Math.random() * 100000);
         gridrow[j] = [number, 0, id];
 

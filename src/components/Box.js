@@ -1,6 +1,5 @@
 
 import backside from "../images/backside.jpg";
-import memory from "../images/memory.jpg";
 
 const Box = (props) => {
     
