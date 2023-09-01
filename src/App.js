@@ -96,6 +96,7 @@ const App = () => {
     const pictureset2 = new Set();
 
     let imagenumber = gridsize * gridsize;
+    const filtimages = images.slice(0, imagenumber / 2);
 
     for (let i = 0; i < gridsize; i++) {
 
@@ -104,8 +105,8 @@ const App = () => {
 
         while (imagenumber > 0) {
 
-          const randomImage = Math.floor(Math.random() * images.length);
-          number = images[randomImage].id;
+          const randomImage = Math.floor(Math.random() * filtimages.length);
+          number = filtimages[randomImage].id;
 
           if (!pictureset.has(number)) {
             pictureset.add(number);
@@ -345,8 +346,8 @@ const App = () => {
               <h2>Select level:</h2>
               <button onClick={() => changeLevel("Apprentice")}>Apprentice</button>
               <button onClick={() => changeLevel("Knight")}>Knight</button>
-              <button onClick={() => changeLevel("Master")}>Master</button>
-              <button onClick={() => changeLevel("Grand Master")}>Grand Master</button>
+              {/* <button onClick={() => changeLevel("Master")}>Master</button> */}
+              {/* <button onClick={() => changeLevel("Grand Master")}>Grand Master</button> */}
             </div>
             <div className="hiddenbutton">
               <button onClick={() => logIn()}>Click</button>
