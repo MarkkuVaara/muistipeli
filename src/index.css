@@ -177,13 +177,13 @@ button:focus {
     border-style: solid;
     padding-top: 10px;
     padding-bottom: 10px;
-    margin-left: 20%;
-    margin-right: 20%;
+    margin-left: 30%;
+    margin-right: 30%;
 }
 
-.dbimage {
-    height: 50px;
-    width: 50px;
+.dbimage > img {
+    height: 120px;
+    width: 120px;
 }
 
 /* Boxes */

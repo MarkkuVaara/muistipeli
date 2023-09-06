@@ -346,7 +346,7 @@ const App = () => {
               <h2>Select level:</h2>
               <button onClick={() => changeLevel("Apprentice")}>Apprentice</button>
               <button onClick={() => changeLevel("Knight")}>Knight</button>
-              {/* <button onClick={() => changeLevel("Master")}>Master</button> */}
+              <button onClick={() => changeLevel("Master")}>Master</button>
               {/* <button onClick={() => changeLevel("Grand Master")}>Grand Master</button> */}
             </div>
             <div className="hiddenbutton">
@@ -372,7 +372,7 @@ const App = () => {
             }
             {user != null
               && <div>
-                <p>{user.username} logged in</p>
+                <p>You are logged in as {user.username}.</p>
                 <form onSubmit={addImage}>
                   <FileUploader onFileSelectSuccess={(file) => setSelectedFile(file)}
                     onFileSelectError={({ error }) => alert(error)} />
@@ -380,7 +380,7 @@ const App = () => {
                 </form>
                 <p>Images in database:</p>
                 {images.map(image =>
-                  <div className="">
+                  <div className="dbimage">
                     <img src={image.image} alt="" />
                   </div>
                 )}
