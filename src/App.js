@@ -39,14 +39,14 @@ const App = () => {
     imageService
       .getAll()
       .then(response => {
-        console.log('Promise fulfilled');
+        console.log('Images fetched.');
         setImages(response.data);
       });
 
     highscoreService
       .getAll()
       .then(response => {
-        console.log('Other promise fulfilled');
+        console.log('Highscores fetched.');
         setHighscores(response.data.sort( function(a, b){
           if (a.score > b.score) {return -1;};
           if (a.score < b.score) {return 1;};
@@ -165,7 +165,6 @@ const App = () => {
 
         if (picture[0] === lastcard) {
 
-          setMessage("Match!");
           for (let i = 0; i < gridsize; i++) {
 
             for (let j = 0; j < gridsize; j++) {
@@ -192,7 +191,6 @@ const App = () => {
 
         } else {
 
-          setMessage("No match");
           for (let i = 0; i < gridsize; i++) {
 
             for (let j = 0; j < gridsize; j++) {
@@ -304,10 +302,7 @@ const App = () => {
       setUsername('');
       setPassword('');
     } catch (exception) {
-      setMessage('wrong credentials!');
-      setTimeout(() => {
-        setMessage(null)
-      }, 5000);
+      alert("Wrong credentials!");
     }
 
   };
@@ -323,10 +318,7 @@ const App = () => {
     imageService
       .create(Image)
       .then(response => {
-        setMessage('Image sent!');
-        setTimeout(() => {
-          setMessage(null)
-        }, 2000);
+        alert("Image sent!");
       });
 
   }
@@ -357,12 +349,12 @@ const App = () => {
               <h2>Login</h2>
               <form onSubmit={handleLogin}>
                 <div>
-                  username
+                  <p>Type username:</p>
                   <input type="text" value={username} name="Username"
                     onChange={({ target }) => setUsername(target.value)} />
                 </div>
                 <div>
-                  password
+                  <p>Type password:</p>
                   <input type="password" value={password} name="Password"
                     onChange={({ target }) => setPassword(target.value)} />
                 </div>
