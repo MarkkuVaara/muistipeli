@@ -12,6 +12,11 @@ import highscoreService from './services/Highscores';
 import imageService from './services/Images';
 import loginService from './services/Login';
 
+import correct from './sounds/correct.mp3';
+import wrong from './sounds/wrong.mp3';
+import ching from './sounds/ching.mp3';
+import huzzah from './sounds/huzzah.mp3';
+
 const App = () => {
 
   const [page, setPage] = useState("level");
@@ -165,6 +170,9 @@ const App = () => {
 
         if (picture[0] === lastcard) {
 
+          const audio = new Audio(correct);
+          audio.play();
+
           for (let i = 0; i < gridsize; i++) {
 
             for (let j = 0; j < gridsize; j++) {
@@ -190,6 +198,9 @@ const App = () => {
           }, 5000);
 
         } else {
+
+          const audio = new Audio(wrong);
+          audio.play();
 
           for (let i = 0; i < gridsize; i++) {
 
@@ -219,6 +230,9 @@ const App = () => {
 
         }
       }
+
+      const audio = new Audio(ching);
+      audio.play();
 
       setGrid(gridcopy);
       if (lastcard === -1) {
@@ -255,7 +269,10 @@ const App = () => {
       setPage("win");
       setScore(points);
 
-      let hsname = prompt("You have completed game! Insert your name here:", "John Doe"); 
+      let hsname = prompt("You have completed game! Insert your name here:", "John Doe");
+
+      const audio = new Audio(huzzah);
+      audio.play();
 
       const Highscore = {
         name: hsname,
