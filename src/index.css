@@ -190,6 +190,10 @@ button:focus {
     margin-right: 30%;
 }
 
+.loginform > form > button {
+    margin-top: 10px;
+}
+
 .dbimage > img {
     height: 120px;
     width: 120px;

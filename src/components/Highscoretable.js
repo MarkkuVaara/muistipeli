@@ -1,7 +1,12 @@
 
+import Confetti from 'react-confetti';
+// import useWindowSize from 'react-use/lib/useWindowSize';
+
 const Highscoretable = (props) => {
 
     const highscores = props.highscores.filter((highscore) => highscore.level === props.level);
+
+//    const { width, height } = useWindowSize();
 
     return (
         <>
@@ -20,6 +25,10 @@ const Highscoretable = (props) => {
         )}
         <div className="highscoreend">
         </div>
+        <Confetti
+            width={200}
+            height={200}
+        />
         </>
     )
 }
