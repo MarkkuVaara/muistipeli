@@ -65,6 +65,7 @@ p {
     border-color: grey;
     border-style: solid;
     padding-bottom: 10px;
+    background-color: gainsboro;
 }
 
 .win > button {
@@ -92,6 +93,7 @@ p {
     border-bottom: 0px;
     border-color: grey;
     border-style: solid;
+    background-color: gainsboro;
 }
 
 .highscore1 {
@@ -188,6 +190,7 @@ button:focus {
     padding-bottom: 10px;
     margin-left: 30%;
     margin-right: 30%;
+    background-color: gainsboro;
 }
 
 .loginform > form > button {

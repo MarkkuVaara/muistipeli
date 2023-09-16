@@ -1,4 +1,5 @@
 
+import React from 'react';
 import Confetti from 'react-confetti';
 // import useWindowSize from 'react-use/lib/useWindowSize';
 
@@ -26,8 +27,14 @@ const Highscoretable = (props) => {
         <div className="highscoreend">
         </div>
         <Confetti
-            width={200}
-            height={200}
+            width={window.width}
+            height={window.height}
+            confettiSource={[50, 50, 100, 100]}
+            opacity={0.8}
+            initialVelocityX={10}
+            initialVelocityY={10}
+            friction={1.0}
+            numberOfPieces={400}
         />
         </>
     )
