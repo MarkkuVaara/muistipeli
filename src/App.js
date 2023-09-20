@@ -40,11 +40,13 @@ const App = () => {
 
   useEffect(() => {
 
-    console.log('Fetching..');
+    setMessage("LOADING IMAGES..");
+
     imageService
       .getAll()
       .then(response => {
         console.log('Images fetched.');
+        setMessage(null);
         setImages(response.data);
       });
 
@@ -363,15 +365,15 @@ const App = () => {
             </div>
             {(login === "visible") && (user === null)
               && <div className="loginform">
-              <h2>Login</h2>
+              <h2>Secret login</h2>
               <form onSubmit={handleLogin}>
                 <div>
-                  <p>Type username:</p>
+                  <p>Username:</p>
                   <input type="text" value={username} name="Username"
                     onChange={({ target }) => setUsername(target.value)} />
                 </div>
                 <div>
-                  <p>Type password:</p>
+                  <p>Password:</p>
                   <input type="password" value={password} name="Password"
                     onChange={({ target }) => setPassword(target.value)} />
                 </div>
@@ -389,9 +391,9 @@ const App = () => {
                 </form>
                 <p>Images in database:</p>
                 {images.map(image =>
-                  <div className="dbimage">
+                  <span className="dbimage">
                     <img src={image.image} alt="" />
-                  </div>
+                  </span>
                 )}
               </div>
             }
