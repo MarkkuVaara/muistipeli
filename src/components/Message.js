@@ -7,7 +7,7 @@ const Message = ({ message }) => {
     }
   
     return (
-      <div className="banner">
+      <div className="message">
         {message}
       </div>
     )

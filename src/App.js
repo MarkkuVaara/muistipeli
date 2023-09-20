@@ -195,9 +195,6 @@ const App = () => {
           }
 
           setPoints(points + 20);
-          setTimeout(() => {
-            setMessage(null)
-          }, 5000);
 
         } else {
 
@@ -225,7 +222,6 @@ const App = () => {
 
           setTimeout(() => {
             setGrid(gridcopy);
-            setMessage(null);
           }, 1000);
           setLastcard(-1);
           return;
