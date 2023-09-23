@@ -5,6 +5,7 @@ const Box = (props) => {
     
     const picture = props.picture;
     const images = props.images;
+    const cardflip = props.cardflip;
 
     let i = 0;
     let image = "";
@@ -21,9 +22,15 @@ const Box = (props) => {
     return (
 
     <div className="box">
-        {picture[1] === 0 &&
+        {(picture[1] === 0) && (cardflip !== picture[2]) &&
             <div className="front">
                 <img alt="Profile" src={backside} 
+                    style={{ width: '100%', height: '100%' }} />
+            </div>
+        }
+        {(picture[1] === 0) && (cardflip === picture[2]) &&
+            <div className="back">
+                <img alt="Profile" src={image} 
                     style={{ width: '100%', height: '100%' }} />
             </div>
         }

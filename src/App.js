@@ -37,6 +37,7 @@ const App = () => {
   const [password, setPassword] = useState("");
 
   const [selectedFile, setSelectedFile] = useState(null);
+  const [cardflip, setCardflip] = useState(null);
 
   useEffect(() => {
 
@@ -220,9 +221,10 @@ const App = () => {
   
           }
 
+          setCardflip(picture[2]);
           setTimeout(() => {
-            setGrid(gridcopy);
-          }, 1000);
+            setCardflip(null);
+          }, 250);
           setLastcard(-1);
           return;
 
@@ -406,11 +408,13 @@ const App = () => {
               <div className="boxrow">
                 {gridrow.map(picture => 
                   <div onClick={() => checkCard(picture)}>
-                    <Box picture={picture} images={images} />
+                    <Box picture={picture} images={images} cardflip={cardflip} />
                   </div>
                 )}
               </div>
             )}
+            {cardflip === true
+              && <p>cardflip!</p>}
           </div>
         }
         {page === "win"
