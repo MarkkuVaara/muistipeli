@@ -5,7 +5,8 @@ import Confetti from 'react-confetti';
 
 const Highscoretable = (props) => {
 
-    const highscores = props.highscores.filter((highscore) => highscore.level === props.level);
+    const highscoresf = props.highscores.filter((highscore) => highscore.level === props.level);
+    const highscores = highscoresf.slice(0, 10);
 
 //    const { width, height } = useWindowSize();
 

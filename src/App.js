@@ -298,6 +298,7 @@ const App = () => {
   }
 
   const newGame = () => {
+    setLevel("");
     setPage("level");
     setPoints(0);
   };
