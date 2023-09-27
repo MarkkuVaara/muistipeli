@@ -4,6 +4,8 @@
 h1 {
     color: black;
     font-size: 48px;
+    font-weight: bold;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 }
 
 p {
@@ -220,6 +222,7 @@ button:focus {
     padding: 5px;
 }
 
+
 /* Boxes */
 
 .boxes {
@@ -297,4 +300,5 @@ button:focus {
 .backend {
     display: visible;
     border: solid 2px black;
+    border-radius: 8px;
 }

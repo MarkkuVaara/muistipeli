@@ -1,5 +1,5 @@
 
-import memory from '../images/memory.jpg'
+import memory from '../images/memory.png'
 
 const Title = () => (
 
