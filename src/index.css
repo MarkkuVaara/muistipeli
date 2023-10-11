@@ -216,9 +216,17 @@ button:focus {
     margin-top: 10px;
 }
 
+.images {
+    padding: 10px;
+    border: 1px;
+    border-color: grey;
+    border-style: solid;
+    background-color: gainsboro;
+}
+
 .dbimage > img {
-    height: 120px;
-    width: 120px;
+    height: 110px;
+    width: 110px;
     padding: 5px;
 }
 

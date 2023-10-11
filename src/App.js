@@ -336,7 +336,7 @@ const App = () => {
     imageService
       .create(Image)
       .then(response => {
-        alert("Image sent!");
+        alert("Image added!");
       });
 
   }
@@ -382,18 +382,21 @@ const App = () => {
             }
             {user != null
               && <div>
-                <p>You are logged in as {user.username}.</p>
+                <b>You are logged in as {user.username}.</b>
                 <form onSubmit={addImage}>
                   <FileUploader onFileSelectSuccess={(file) => setSelectedFile(file)}
                     onFileSelectError={({ error }) => alert(error)} />
                   <button type="submit">Save image</button>
                 </form>
-                <p>Images in database:</p>
-                {images.map(image =>
-                  <span className="dbimage">
-                    <img src={image.image} alt="" />
-                  </span>
-                )}
+                <br/>
+                <div className="images">
+                  <h3>Images in database:</h3>
+                  {images.map(image =>
+                    <span className="dbimage">
+                      <img src={image.image} alt="" />
+                    </span>
+                  )}
+                </div>
               </div>
             }
           </>
