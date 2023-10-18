@@ -31,7 +31,7 @@ const FileUploader = ({onFileSelectError, onFileSelectSuccess}) => {
     };
 
     return (
-        <div className="file-uploader">
+        <div className="file-uploader hiddenbutton">
             <input type="file" name="image" onChange={handleFileInput}></input>
             <button type="button" onClick={e => fileInput.current && fileInput.current.click()}>Lisää kuva</button>
         </div>
