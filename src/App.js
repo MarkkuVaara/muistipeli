@@ -77,19 +77,19 @@ const App = () => {
     setLevel(level);
     if (level === "Apprentice") { 
       setGridsize(4);
-      setPoints(50);
+      setPoints(250);
      }
     if (level === "Knight") { 
       setGridsize(6);
-      setPoints(200);
+      setPoints(500);
      }
     if (level === "Master") { 
       setGridsize(8);
-      setPoints(800);
+      setPoints(1000);
      }
     if (level === "Grand Master") { 
       setGridsize(10);
-      setPoints(3200);
+      setPoints(4000);
      }
     setPage("start");
 
