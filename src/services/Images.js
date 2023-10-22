@@ -1,5 +1,5 @@
 import axios from 'axios';
-const baseUrl = 'http://localhost:3001/images';
+const baseUrl = '/images';
 
 let token = null;
 
